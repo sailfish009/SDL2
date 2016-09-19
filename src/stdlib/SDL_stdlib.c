@@ -275,7 +275,9 @@ int SDL_tolower(int x) { return ((x) >= 'A') && ((x) <= 'Z') ? ('a'+((x)-'A')) :
 
 #ifndef __FLTUSED__
 #define __FLTUSED__
+#if _MSC_VER < 1900
 __declspec(selectany) int _fltused = 1;
+#endif
 #endif
 
 /* The optimizer on Visual Studio 2005 and later generates memcpy() calls */
@@ -369,6 +371,7 @@ localexit:
     /* *INDENT-ON* */
 }
 
+#if _MSC_VER < 1900
 void
 _ftol2_sse()
 {
@@ -961,6 +964,7 @@ RETZERO:
     }
     /* *INDENT-ON* */
 }
+#endif
 
 #endif /* _M_IX86 */
 
